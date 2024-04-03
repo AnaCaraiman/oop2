@@ -27,19 +27,7 @@ Flori &Flori::operator=(const Flori &d) {
     colour=d.name;
     return *this;}
 
-void Flori::Read() {
-    cout<<"Introduceti tip floare:";
-    cin >> name;
-    cout<<"Introduceti culoare floare:";
-    cin>>colour;
-}
 
-void Flori::Print(std::ostream &os) const{
-    os<<"Floare: "<<name<<" Culoare: "<<colour;
-}
-ostream &operator<<(ostream &os, const Flori &flori) {
-    flori.Print(os);
-    return os;
-}
 
-Flori::~Flori()=default;
+
+

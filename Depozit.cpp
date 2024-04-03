@@ -1,37 +1,32 @@
-
 #include "Depozit.h"
 #include <iostream>
-#include <string>
-
-using namespace std;
-
-
-Depozit::Depozit(const std::string &name, const std::string &colour, int nrstock): Flori(name,colour),nrstock(nrstock) {}
-Depozit::Depozit() {}
-Depozit::Depozit(const Depozit &d) : Flori(d.name, d.colour), nrstock(d.nrstock) {}
-
-Depozit &Depozit::operator=(const Depozit &d) {
-    Flori::operator=(d);
-    nrstock=d.nrstock;
-    return *this;
-}
-int Depozit::getnrstock() const {
-    return nrstock;
-}
-void Depozit::setnrstock(int nrstock) {
-    nrstock = nrstock;
-}
-void Depozit::Read(){
-    Flori::Read();
-    cout<<"Numar stoc fire floare:"; cin>>nrstock;
+#include "insfstoc.h"
+void Depozit::adaugaFloare(const std::string& numeFloare, int cantitate) {
+    stocFloare[numeFloare] += cantitate;
 }
 
-void Depozit::Print(ostream &os) const {
-    Flori::Print(os);
-    os << " Nr flori in stoc: " << nrstock;
-
+bool Depozit::verificaStoc(const std::string& numeFloare, int cantitate) {
+    auto it = stocFloare.find(numeFloare);
+    if (it == stocFloare.end() || it->second < cantitate) {
+        return false;
+    }
+    return true;
 }
 
-Depozit::~Depozit()=default;
+void Depozit::actualizeazaStoc(const std::string& numeFloare, int cantitate) {
+    if (verificaStoc(numeFloare, cantitate)) {
+        stocFloare[numeFloare] -= cantitate;
+    }
+}
+
+
+
+void Depozit::print() const {
+    for (const auto& pereche : stocFloare) {
+        std::cout << "Floare: " << pereche.first << ", Stoc: " << pereche.second << std::endl;
+    }
+}
+
+
 
 

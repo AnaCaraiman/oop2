@@ -1,0 +1,11 @@
+# Stoc initial
+Trandafiri 10
+Lalele 16
+Crini 20
+
+# Comenzi
+# Client,NumeFloare,CuloareHartie,Cantitate
+Andrei Popescu Trandafiri Rosu 5
+Maria Ionescu Lalele Verde 2
+
+# Sfarsit

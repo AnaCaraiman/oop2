@@ -1,34 +1,20 @@
-
 #ifndef OOP2_BUCHETE_H
 #define OOP2_BUCHETE_H
+
+
+#pragma once
 #include "Flori.h"
-#include <string>
-#include <ostream>
+#include "iostream"
 
-class Buchete: public Flori{
+class Buchete : public Flori {
 private:
-    int nrfire;
-    std::string hcolour;
-    static int nrbuchete;
+    std::string culoareHartie;
+    int cantitate;
+
 public:
-    Buchete(const std::string &name, const std::string &colour, int nrfire,const std::string &hcolour);
-    Buchete();
-    int getnrfire() const;
-    void setnrfire(int nrfire);
-    void sethcolour(const std::string &hcolour);
-    const std::string &gethcolour() const;
-
-    static int getnrbuchete();
-    static void setnrbuchete(int nrbuchete);
-    Buchete& operator=(const Buchete& d)=delete;
-    Buchete(const Buchete &b);
-    void Read();
-    void Print(std::ostream &os) const override;
-
-
-
-
-
+    Buchete(const std::string& nume, const std::string& culoare, const std::string& culoareHartie, int cantitate);
+    std::string getCuloareHartie() const;
+    int getCantitate() const;
 };
 
 #endif //OOP2_BUCHETE_H

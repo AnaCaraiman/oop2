@@ -1,28 +1,16 @@
-
-#ifndef OOP2_DEPOZIT_H
-#define OOP2_DEPOZIT_H
-
-#include <string>
-#include "Flori.h"
-#include <ostream>
-#include<iostream>
-#include <memory>
+#pragma once
 #include <vector>
-class Depozit: public Flori {
-protected:
-    int nrstock;
+#include <string>
+#include <unordered_map>
+
+class Depozit {
+private:
+    std::unordered_map<std::string, int> stocFloare;
 
 public:
-    Depozit(const std::string &name, const std::string &colour, int nrstock);
-    Depozit();
-    Depozit(const Depozit& dep);
-
-    int getnrstock() const;
-    void setnrstock(int nrstock);
-    Depozit& operator=(const Depozit& d);
-
-    void Read();
-    void Print(std::ostream &os) const override;
-    virtual ~Depozit();
+    void adaugaFloare(const std::string& numeFloare, int cantitate);
+    bool verificaStoc(const std::string& numeFloare, int cantitate);
+    void actualizeazaStoc(const std::string& numeFloare, int cantitate);
+    void print() const;
 };
-#endif //OOP2_DEPOZIT_H
+

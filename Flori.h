@@ -1,7 +1,5 @@
-
-
-#ifndef _FLORI_H
-#define _FLORI_H
+#ifndef OOP2_FLORI_H
+#define OOP2_FLORI_H
 
 #include <cstring>
 #include <ostream>
@@ -30,10 +28,7 @@ public:
 
     bool operator==(const Flori &rhs) const;
 
-    //functii virtuale
-    virtual void Read() = 0;
-    virtual void Print(std::ostream &os) const;
-    virtual ~Flori();
+
 };
 
-#endif //OOP2_FLORI_H
+#endif
