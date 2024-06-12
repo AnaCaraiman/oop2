@@ -19,7 +19,7 @@ std::shared_ptr<Client> Client::clone() const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Client& client) {
-    os << "Client Name: " << client.name << ", Address: " << client.address;
+    os << "Client Nume: " << client.name << ", Adresa: " << client.address;
     return os;
 }
 

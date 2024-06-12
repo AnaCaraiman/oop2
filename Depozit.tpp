@@ -43,7 +43,7 @@ int Depozit<T>::getQuantity(const T& name) const {
     return stoc.at(name);
 }
 
-// operatorul << ca
+// operatorul <<
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const Depozit<T>& depozit) {
     for (const auto& pair : depozit.stoc) {

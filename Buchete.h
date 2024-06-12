@@ -28,9 +28,9 @@ public:
 
     // Operator << pentru afișarea buchetului de flori
     friend std::ostream& operator<<(std::ostream& os, const Buchete<T>& buchet) {
-        os << "Flower: " << buchet.flowerType
-           << ", Quantity: " << buchet.quantity
-           << ", Paper Color: " << buchet.paperColor;
+        os << "Floare: " << buchet.flowerType
+           << ", Cantitae: " << buchet.quantity
+           << ", Culoare Hartie: " << buchet.paperColor;
         return os;
     }
 
