@@ -1,108 +1,28 @@
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include "Depozit.h"
-#include "Comanda.h"
-#include "Client.h"
+#include <string>
 #include "Buchete.h"
-#include "insfstoc.h"
-#include <algorithm>
-#include <cctype>
+#include "Client.h"
+#include "Comanda.h"
+#include "Depozit.h"
 
 int main() {
-    Depozit depozit;
-    std::vector<Comanda> istoricComenzi;
+    // Crearea unui client folosind Singleton
+    auto client = Client::getInstance("Popescu Ion", "Str Mihai Eminescu nr 334");
 
-    std::ifstream file("input.txt");
-    std::string line;
-    bool citesteStoc = false;
-    bool citesteComenzi = false;
+    // Crearea unui buchet cu tipul de floare, cantitatea si ambalaj
+    Buchete<std::string> bouquet("lalele", 5, "verde"); // Tip floare: lalele, Cantitate: 5, Culoare hartie: verde
 
-    while (getline(file, line)) {
-        std::istringstream iss(line);
-        if (line == "# Stoc initial") {
-            citesteStoc = true;
-            citesteComenzi = false;
-            continue;
-        } else if (line == "# Comenzi") {
-            citesteStoc = false;
-            citesteComenzi = true;
-            continue;
-        } else if (line == "# Sfarsit") {
-            break;
-        }
+    // Crearea unei comenzi
+    auto order = OrderFactory<std::string>::createOrder("Popescu Ion", client, bouquet);
+    order->processOrder();
 
-        if (citesteStoc) {
-            std::string numeFloare;
-            int cantitate;
-            iss >> numeFloare >> cantitate;
-            depozit.adaugaFloare(numeFloare, cantitate);
-        }
+    // Gestionarea stocului
+    auto& stock = Depozit<std::string>::getInstance();
+    stock.addFlori("lalele", 20);
 
-        if (citesteComenzi) {
-            std::string nume, prenume, numeFloare, culoareHartie;
-            int cantitate;
-            iss >> nume >> prenume >> numeFloare >> culoareHartie >> cantitate;
+    std::cout << "Stock curent: " << std::endl;
+    std::cout << stock;
 
-                Client client(nume, prenume);
-                Buchete buchet(numeFloare, "Nu conteaza culoarea în acest context", culoareHartie, cantitate);
-                Comanda comanda(client, depozit);
-                comanda.adaugaBuchet(buchet);
-                comanda.proceseazaComanda();
-                istoricComenzi.push_back(comanda);
-            }
-        }
-        file.close();
+    return 0;
+}
 
-
-        int optiune;
-        do {
-            std::cout << "\n1. Verifica stoc\n2. Adauga comanda\n3. Istoric comenzi\n0. Iesire\nAlege o optiune: ";
-            std::cin >> optiune;
-
-            switch (optiune) {
-                case 1:
-                    depozit.print();
-                    break;
-                case 2: {
-                    std::string nume, prenume, numeFloare, culoareHartie;
-                    int cantitate;
-                    std::cout << "Introduceti numele clientului: ";
-                    std::cin >> nume >> prenume;
-                    std::cout << "Introduceti numele florii: ";
-                    std::cin >> numeFloare;
-                    std::cout << "Introduceti culoarea hartiei: ";
-                    std::cin >> culoareHartie;
-                    std::cout << "Introduceti cantitatea: ";
-                    std::cin >> cantitate;
-
-                    Client client(nume, prenume);
-                    Buchete buchet(numeFloare, "", culoareHartie, cantitate);
-                    Comanda comanda(client, depozit);
-                    comanda.adaugaBuchet(buchet);
-
-                    try {
-                        comanda.proceseazaComanda();
-                        istoricComenzi.push_back(comanda);
-                        std::cout << "Comanda adaugata cu succes.\n";
-                    } catch (const insfstoc &e) {
-                        std::cerr << "Eroare la procesarea comenzii: " << e.what() << std::endl;
-                    }
-                    break;
-                }
-                case 3:
-                    for (const auto &comanda: istoricComenzi) {
-                        comanda.print();
-                    }
-                    break;
-                case 0:
-                    std::cout << "Iesire din program.\n";
-                    break;
-                default:
-                    std::cout << "Optiune invalida. Reincercati.\n";
-                    break;
-            }
-        } while (optiune != 0);
-
-        return 0;
-    }

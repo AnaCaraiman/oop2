@@ -1,16 +1,38 @@
-#pragma once
-#include <vector>
-#include <string>
-#include <unordered_map>
+#ifndef OOP2_DEPOZIT_H
+#define OOP2_DEPOZIT_H
 
+#include <map>
+#include <string>
+#include <memory>
+#include <iostream>
+
+// Clasa template pentru gestionarea stocului de flori
+template <typename T>
 class Depozit {
 private:
-    std::unordered_map<std::string, int> stocFloare;
+    std::map<T, int> stoc;
+    static std::unique_ptr<Depozit<T>> instance;
+
+    // Constructor privat
+    Depozit();
+
+    // Permitem getInstance sa acceseze constructorul privat
+    template <typename U>
+    friend class Depozit;
 
 public:
-    void adaugaFloare(const std::string& numeFloare, int cantitate);
-    bool verificaStoc(const std::string& numeFloare, int cantitate);
-    void actualizeazaStoc(const std::string& numeFloare, int cantitate);
-    void print() const;
+    // Singura instanța a clasei Depozit
+    static Depozit<T>& getInstance();
+
+    void addFlori(const T& name, int quantity);
+    void removeFlori(const T& name, int quantity);
+    int getQuantity(const T& name) const;
+
+    // Operator <<
+    template <typename U>
+    friend std::ostream& operator<<(std::ostream& os, const Depozit<U>& depozit);
 };
 
+#include "Depozit.tpp"
+
+#endif

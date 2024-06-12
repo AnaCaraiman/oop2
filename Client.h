@@ -1,16 +1,28 @@
 #ifndef OOP2_CLIENT_H
 #define OOP2_CLIENT_H
-#pragma once
+
 #include <string>
+#include <iostream>
+#include <memory>
 
 class Client {
 private:
-    std::string nume;
-    std::string prenume;
+    std::string name;
+    std::string address;
+    Client(const std::string& name, const std::string& address);
 
 public:
-    Client(const std::string& nume, const std::string& prenume);
-    std::string getNume() const;
-    std::string getPrenume() const;
+    static std::shared_ptr<Client> getInstance(const std::string& name, const std::string& address);
+
+    void setName(const std::string& name);
+    const std::string& getName() const;
+
+    void setAddress(const std::string& address);
+    const std::string& getAddress() const;
+
+    std::shared_ptr<Client> clone() const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Client& client);
 };
-#endif // CLIENT_H
+
+#endif

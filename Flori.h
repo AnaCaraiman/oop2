@@ -1,34 +1,47 @@
 #ifndef OOP2_FLORI_H
 #define OOP2_FLORI_H
 
-#include <cstring>
-#include <ostream>
+#include <iostream>
+#include <memory>
 #include <string>
 
+template <typename T>
 class Flori {
 protected:
-    std::string name;
-    std::string colour;
+    T name;
+    T colour;
 
 public:
-    Flori(const std::string &name, const std::string &colour);
-    Flori();
-    //set,get
-    void setname(const std::string &name);
-    const std::string &getname() const;
+    Flori(const T& name, const T& colour) : name(name), colour(colour) {}
+    Flori() = default;
 
-    void setcolour(const std::string &colour);
-    const std::string &getcolour() const;
+    void setname(const T& name) { this->name = name; }
+    const T& getname() const { return name; }
 
-    //OPERATORUL <<
-    friend std::ostream &operator<<(std::ostream &os, const Flori &flori);
+    void setcolour(const T& colour) { this->colour = colour; }
+    const T& getcolour() const { return colour; }
 
-    //operatorul =
-    Flori& operator=(const Flori& f);
+    std::unique_ptr<Flori<T>> clone() const {
+        return std::make_unique<Flori<T>>(*this);
+    }
 
-    bool operator==(const Flori &rhs) const;
+    friend std::ostream& operator<<(std::ostream& os, const Flori& flori) {
+        os << "Nume: " << flori.name << ", Culoare: " << flori.colour;
+        return os;
+    }
 
+    Flori& operator=(const Flori& f) {
+        if (this != &f) {
+            name = f.name;
+            colour = f.colour;
+        }
+        return *this;
+    }
 
+    bool operator==(const Flori& rhs) const {
+        return name == rhs.name && colour == rhs.colour;
+    }
 };
 
 #endif
+
