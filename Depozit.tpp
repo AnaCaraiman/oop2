@@ -14,7 +14,7 @@ std::unique_ptr<Depozit<T>> Depozit<T>::instance = nullptr;
 template <typename T>
 Depozit<T>::Depozit() = default;
 
-// Implementarea metodei getInstance pentru a returna singura instanța
+// Implementarea metodei getInstance pentru a returna singura instanta
 template <typename T>
 Depozit<T>& Depozit<T>::getInstance() {
     if (!instance) {
