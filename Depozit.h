@@ -21,7 +21,7 @@ private:
     friend class Depozit;
 
 public:
-    // Singura instanța a clasei Depozit
+    // Singura instanta a clasei Depozit
     static Depozit<T>& getInstance();
 
     void addFlori(const T& name, int quantity);
