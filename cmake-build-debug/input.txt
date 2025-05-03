@@ -1,0 +1,24 @@
+6
+floare trandafir rosu 50 5.5
+floare trandafir galben 50 6.0
+floare lalea alba 50 4.0
+floare narcisa galbena 50 4.5
+accesoriu fundita 30
+cutie rotunda 10
+
+15
+Popescu Ana buchet trandafir rosu 5 lalea alba 3 hartie rosie 2025-04-10 14:00
+Ionescu Mihai premium trandafir galben 3 trandafir rosu 2 hartie alba accesorii: fundita 2 2025-04-12 15:30
+Marin Elena aranjamentfloral lalea alba 4 trandafir rosu 2 accesorii: fundita 1 cutie rotunda 2025-04-13 17:45
+Georgescu Ana buchet lalea alba 5 hartie albastra 2025-04-15 11:00
+Barbu Ion premium trandafir galben 4 hartie verde accesorii: fundita 3 2025-04-16 13:00
+Stan Maria aranjamentfloral narcisa galbena 5 trandafir rosu 3 accesorii: fundita 2 cutie rotunda 2025-04-17 09:30
+Dumitru Elena buchet trandafir rosu 6 hartie roz 2025-04-18 12:45
+Radu Ioana buchet trandafir galben 4 hartie mov 2025-04-19 10:00
+Iliescu Paul premium trandafir galben 2 lalea alba 3 hartie alba accesorii: fundita 1 2025-04-20 16:30
+Sandu Vasile aranjamentfloral trandafir rosu 4 lalea alba 3 accesorii: fundita 1 cutie rotunda 2025-04-21 08:15
+Matei Anca buchet lalea alba 7 hartie galbena 2025-04-22 13:50
+Tudor Mircea buchet narcisa galbena 6 hartie gri 2025-04-23 17:25
+Dobre Alina premium trandafir rosu 3 hartie rosie accesorii: fundita 2 2025-04-24 14:40
+Zamfir George aranjamentfloral lalea alba 5 trandafir galben 2 accesorii: fundita 1 cutie rotunda 2025-04-25 11:05
+Voicu Daniel buchet narcisa galbena 4 hartie gri 2025-04-30 19:00

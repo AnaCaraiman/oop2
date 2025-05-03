@@ -1,7 +1,7 @@
-#ifndef OOP2_CLIENT_H
-#define OOP2_CLIENT_H
-#pragma once
+#ifndef CLIENT_H
+#define CLIENT_H
 #include <string>
+#include <iostream>
 
 class Client {
 private:
@@ -10,7 +10,13 @@ private:
 
 public:
     Client(const std::string& nume, const std::string& prenume);
-    std::string getNume() const;
-    std::string getPrenume() const;
+    Client(const Client& other);
+    Client& operator=(const Client& other);
+    ~Client() = default;
+
+    const std::string& getNume() const;
+    const std::string& getPrenume() const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Client& c);
 };
-#endif // CLIENT_H
+#endif

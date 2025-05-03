@@ -1,26 +1,28 @@
+#ifndef COMANDA_H
+#define COMANDA_H
 
-#ifndef OOP2_COMANDA_H
-#define OOP2_COMANDA_H
-
-#pragma once
-#include "Depozit.h"
+#include "Floare.h"
+#include <memory>
+#include <ctime>
+#include <iostream>
 #include "Client.h"
-#include "Buchete.h"
-
+#include "Depozit.h"
 class Comanda {
 private:
     Client client;
-    std::vector<Buchete> buchete;
-    Depozit& depozit;  // Referință la depozit pentru a verifica și actualiza stocul
+    std::tm dataOra{};
+    std::shared_ptr<Floare> produs;
 
 public:
-    Comanda(const Client& client, Depozit& depozit);
-    void adaugaBuchet(const Buchete& buchet);
-    void proceseazaComanda();
-    std::string getNumeClient() const;
-    std::string getPrenumeClient() const;
-    void print() const;
+    Comanda() = default;
+    Comanda(const Client& client, const std::tm& dataOra, std::shared_ptr<Floare> produs);
+
+    void afiseaza(std::ostream& os) const;
+    friend std::ostream& operator<<(std::ostream& os, const Comanda& comanda);
+    static Comanda creeazaComanda(const Client& client, const std::tm& dataOra,
+                                  const std::shared_ptr<Floare>& produs, Depozit& depozit);
+
+
 };
 
-
-#endif //OOP2_COMANDA_H
+#endif
