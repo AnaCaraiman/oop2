@@ -9,7 +9,6 @@ template <typename T>
 class Depozit {
     std::map<T, int> stocProduse;
     std::map<T, double> preturiProduse;
-    // alte metode
 };
 ```
 Această schimbare permite acum folosirea `Depozit` pentru:
