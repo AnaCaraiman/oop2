@@ -51,6 +51,24 @@ Comanda comanda = ComandaBuilder()
     .build();
 ```
 
+Desigur! Iată-l gata de pus într-un **README.md** sau în alt document markdown:
+
+---
+
+### Respectarea principiilor SOLID
+
+Proiectul respectă principiile SOLID astfel:
+
+* **Single Responsibility Principle**: fiecare clasă are un scop clar (de exemplu, `Depozit` doar pentru stocuri, `Comanda` doar pentru comenzi).
+* **Open/Closed Principle**: clasele pot fi extinse (de exemplu, prin template-uri și moștenire), dar nu trebuie modificate direct pentru funcționalități noi.
+* **Liskov Substitution Principle**: clasele derivate (`BuchetSimplu`, `BuchetPremium`, `AranjamentFloral`) pot fi folosite în locul clasei de bază `Floare` fără probleme.
+* **Interface Segregation Principle**: fiecare clasă folosește doar metodele de care are nevoie, fără a implementa metode inutile.
+* **Dependency Inversion Principle**: clasele folosesc tipuri generice și abstractizări (ex. template-uri), nu depind direct de implementări concrete.
+
+---
+
+Îți place cum sună? Vrei să-l mai adaptez puțin sau e perfect așa? 🚀
+
 ## Concluzie
 Clasa Depozit a devenit un template, astfel încât să poată gestiona generic orice tip de produs.
 Această modificare, împreună cu cele două design patterns (Singleton și Builder), asigură un cod clar, organizat și îndeplinește toate cerințele pentru un proiect flexibil și ușor de întreținut.
