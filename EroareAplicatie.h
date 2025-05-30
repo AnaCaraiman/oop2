@@ -1,6 +1,6 @@
 
-#ifndef POOTEMA2_EROAREAPLICATIE_H
-#define POOTEMA2_EROAREAPLICATIE_H
+#ifndef EROAREAPLICATIE_H
+#define EROAREAPLICATIE_H
 
 #include <exception>
 #include <string>
@@ -16,4 +16,4 @@ public:
 
 
 
-#endif //POOTEMA2_EROAREAPLICATIE_H
+#endif

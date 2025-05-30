@@ -1,4 +1,5 @@
 #include "AranjamentFloral.h"
+#include "Depozit.h"
 #include <sstream>
 
 AranjamentFloral::AranjamentFloral()
@@ -23,16 +24,28 @@ void AranjamentFloral::adaugaAccesoriu(const std::string& acc, int cantitate) {
 
 double AranjamentFloral::pretTotal() const {
     double total = 0.0;
+    auto& depozitFlori = Depozit<std::pair<std::string, std::string>>::getInstance();
+    auto& depozitAccesorii = Depozit<std::pair<std::string, AccesoriuTag>>::getInstance();
+    auto& depozitCutii = Depozit<std::pair<std::string, CutieTag>>::getInstance();
+
     for (const auto& f : flori) {
-        auto it = preturi.find(f.first);
-        if (it != preturi.end()) {
-            total += f.second * it->second;
-        }
+        double pretFloare = depozitFlori.getPretProdus(f.first);
+        total += f.second * pretFloare;
     }
-    total += cantitateCutie * 5.0;  // preț fix de 5 lei per cutie
-    total += accesorii.size() * 1.5; // opțional: preț generic pentru accesorii
+
+    if (!tipCutie.empty()) {
+        double pretCutie = depozitCutii.getPretProdus({tipCutie, CutieTag{}});
+        total += cantitateCutie * pretCutie;
+    }
+
+    for (const auto& acc : accesorii) {
+        double pretAcc = depozitAccesorii.getPretProdus({acc.first, AccesoriuTag{}});
+        total += acc.second * pretAcc;
+    }
+
     return total;
 }
+
 
 const std::map<std::pair<std::string, std::string>, int>& AranjamentFloral::getFlori() const {
     return flori;

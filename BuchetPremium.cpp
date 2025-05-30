@@ -1,4 +1,5 @@
 #include "BuchetPremium.h"
+#include "Depozit.h"
 #include <sstream>
 
 
@@ -14,11 +15,14 @@ const std::map<std::string, int>& BuchetPremium::getAccesorii() const {
 
 double BuchetPremium::pretTotal() const {
     double total = BuchetSimplu::pretTotal();
+    auto& depozitAccesorii = Depozit<std::pair<std::string, AccesoriuTag>>::getInstance();
     for (const auto& acc : accesorii) {
-        total += acc.second * 5.0; // presupunem 5 lei / accesoriu
+        double pretAcc = depozitAccesorii.getPretProdus({acc.first, AccesoriuTag{}});
+        total += acc.second * pretAcc;
     }
     return total;
 }
+
 
 std::shared_ptr<Floare> BuchetPremium::clone() const {
     return std::make_shared<BuchetPremium>(*this);

@@ -1,5 +1,5 @@
-#ifndef POOTEMA2_FLOARE_H
-#define POOTEMA2_FLOARE_H
+#ifndef FLOARE_H
+#define FLOARE_H
 
 #include <string>
 #include <memory>
@@ -23,5 +23,5 @@ public:
     double getPret() const;
 };
 
-#endif //POOTEMA2_FLOARE_H
+#endif
 
