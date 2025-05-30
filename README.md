@@ -51,8 +51,6 @@ Comanda comanda = ComandaBuilder()
     .build();
 ```
 
-Desigur! Iată-l gata de pus într-un **README.md** sau în alt document markdown:
-
 ---
 
 ### Respectarea principiilor SOLID
@@ -67,7 +65,6 @@ Proiectul respectă principiile SOLID astfel:
 
 ---
 
-Îți place cum sună? Vrei să-l mai adaptez puțin sau e perfect așa? 🚀
 
 ## Concluzie
 Clasa Depozit a devenit un template, astfel încât să poată gestiona generic orice tip de produs.
